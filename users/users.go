@@ -10,3 +10,9 @@ type User struct {
 	Username string
 	Active   bool
 }
+
+func (u *User) Deactivate() error {
+	u.Active = false
+
+	return nil
+}

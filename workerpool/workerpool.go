@@ -11,6 +11,18 @@ type resultWithError struct {
 	Err  error
 }
 
+func deactivateUser(wg *sync.WaitGroup, inCh <-chan users.User, outCh chan<- resultWithError) {
+	defer wg.Done()
+
+	for usr := range inCh {
+		err := usr.Deactivate()
+		outCh <- resultWithError{
+			User: usr,
+			Err:  err,
+		}
+	}
+}
+
 func DeactivateUsers(usrs []users.User, wgCount int) ([]users.User, error) {
 	inCh := make(chan users.User)
 	outCh := make(chan resultWithError)
@@ -30,7 +42,7 @@ func DeactivateUsers(usrs []users.User, wgCount int) ([]users.User, error) {
 		for i := 0; i < wgCount; i++ {
 			wg.Add(1)
 
-			go doWork(wg, inCh, outCh)
+			go deactivateUser(wg, inCh, outCh)
 		}
 		wg.Wait()
 		close(outCh)
