@@ -1,6 +1,8 @@
 package workerpool
 
 import (
+	"reflect"
+	"sort"
 	"strconv"
 	"testing"
 
@@ -27,7 +29,7 @@ func generateUsers(count int) (activated, deactivated []users.User) {
 		}
 	}
 
-	return res
+	return activated, deactivated
 }
 
 func TestDeactivateUsers(t *testing.T) {
@@ -44,11 +46,11 @@ func TestDeactivateUsers(t *testing.T) {
 			Deactivated: deactivated[:1],
 		},
 		{
-			Activated:   deactivated[:10],
+			Activated:   activated[:10],
 			Deactivated: deactivated[:10],
 		},
 		{
-			Activated:   deactivated[:100],
+			Activated:   activated[:100],
 			Deactivated: deactivated[:100],
 		},
 		{
@@ -62,6 +64,16 @@ func TestDeactivateUsers(t *testing.T) {
 	}
 
 	for i := range cases {
+		got, _ := DeactivateUsers(cases[i].Activated, 10)
+		sort.Slice(cases[i].Deactivated, func(j, k int) bool {
+			return cases[i].Deactivated[j].Fullname < cases[i].Deactivated[k].Fullname
+		})
+		sort.Slice(got, func(j, k int) bool {
+			return got[j].Fullname < got[k].Fullname
+		})
 
+		if !reflect.DeepEqual(got, cases[i].Deactivated) {
+			t.Errorf("expected: %v got: %v", cases[i].Deactivated, got)
+		}
 	}
 }
