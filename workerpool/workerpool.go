@@ -1,6 +1,7 @@
 package workerpool
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/perfectgentlemande/go-semaphore-vs-worker-pool/users"
@@ -50,7 +51,7 @@ func DeactivateUsers(usrs []users.User, wgCount int) ([]users.User, error) {
 
 	for res := range outputCh {
 		if res.Err != nil {
-			return nil, res.Err
+			return nil, fmt.Errorf("an error occurred: %w", res.Err)
 		}
 
 		output = append(output, res.User)

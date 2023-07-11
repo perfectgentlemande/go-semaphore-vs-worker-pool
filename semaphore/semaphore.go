@@ -52,13 +52,13 @@ func DeactivateUsers(usrs []users.User, gCount int) ([]users.User, error) {
 	}
 
 	for i := len(usrs); i > 0; i-- {
-		resErr := <-outputCh
-		if resErr.Err != nil {
+		res := <-outputCh
+		if res.Err != nil {
 			close(sgnlCh)
-			return nil, fmt.Errorf("an error occurred: %w", resErr.Err)
+			return nil, fmt.Errorf("an error occurred: %w", res.Err)
 		}
 
-		output = append(output, resErr.User)
+		output = append(output, res.User)
 	}
 
 	return output, nil
