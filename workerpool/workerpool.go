@@ -24,17 +24,17 @@ func deactivateUser(wg *sync.WaitGroup, inCh <-chan users.User, outCh chan<- res
 }
 
 func DeactivateUsers(usrs []users.User, wgCount int) ([]users.User, error) {
-	inCh := make(chan users.User)
-	outCh := make(chan resultWithError)
+	inputCh := make(chan users.User)
+	outputCh := make(chan resultWithError)
 	wg := &sync.WaitGroup{}
 
 	output := make([]users.User, 0, len(usrs))
 
 	go func() {
-		defer close(inCh)
+		defer close(inputCh)
 
 		for i := range usrs {
-			inCh <- usrs[i]
+			inputCh <- usrs[i]
 		}
 	}()
 
@@ -42,13 +42,13 @@ func DeactivateUsers(usrs []users.User, wgCount int) ([]users.User, error) {
 		for i := 0; i < wgCount; i++ {
 			wg.Add(1)
 
-			go deactivateUser(wg, inCh, outCh)
+			go deactivateUser(wg, inputCh, outputCh)
 		}
 		wg.Wait()
-		close(outCh)
+		close(outputCh)
 	}()
 
-	for res := range outCh {
+	for res := range outputCh {
 		if res.Err != nil {
 			return nil, res.Err
 		}
