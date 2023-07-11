@@ -77,3 +77,11 @@ func TestDeactivateUsers(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkDeactivateUsers(b *testing.B) {
+	activated, _ := generateUsers(100000)
+
+	for i := 0; i < b.N; i++ {
+		DeactivateUsers(activated, 10)
+	}
+}
