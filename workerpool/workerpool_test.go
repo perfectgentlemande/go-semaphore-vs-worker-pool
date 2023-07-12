@@ -1,6 +1,7 @@
 package workerpool
 
 import (
+	"fmt"
 	"reflect"
 	"sort"
 	"strconv"
@@ -79,9 +80,49 @@ func TestDeactivateUsers(t *testing.T) {
 }
 
 func BenchmarkDeactivateUsers(b *testing.B) {
-	activated, _ := generateUsers(100000)
+	activated, deactivated := generateUsers(1000000)
 
-	for i := 0; i < b.N; i++ {
-		DeactivateUsers(activated, 10)
+	type TestCase struct {
+		Activated   []users.User
+		Deactivated []users.User
+	}
+
+	cases := []TestCase{
+		{
+			Activated:   activated[:1],
+			Deactivated: deactivated[:1],
+		},
+		{
+			Activated:   activated[:10],
+			Deactivated: deactivated[:10],
+		},
+		{
+			Activated:   activated[:100],
+			Deactivated: deactivated[:100],
+		},
+		{
+			Activated:   activated[:1000],
+			Deactivated: deactivated[:1000],
+		},
+		{
+			Activated:   activated[:10000],
+			Deactivated: deactivated[:10000],
+		},
+		{
+			Activated:   activated[:100000],
+			Deactivated: deactivated[:100000],
+		},
+		{
+			Activated:   activated[:1000000],
+			Deactivated: deactivated[:1000000],
+		},
+	}
+
+	for i := range cases {
+		b.Run(fmt.Sprintf("input_size_%d", len(cases[i].Activated)), func(b *testing.B) {
+			for j := 0; j < b.N; j++ {
+				DeactivateUsers(cases[i].Activated, 10)
+			}
+		})
 	}
 }
