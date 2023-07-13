@@ -1,0 +1,47 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/perfectgentlemande/go-semaphore-vs-worker-pool/semaphore
+BenchmarkDeactivateUsers/input_size_1-10         	 1712277	       707.2 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_1-10         	 1689138	       708.4 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_1-10         	 1694395	       708.6 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_1-10         	 1689991	       704.9 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_1-10         	 1694772	       707.2 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_1-10         	 1698516	       712.2 ns/op	     552 B/op	       8 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  205780	      5600 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  208267	      5794 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  209551	      5705 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  208686	      5701 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  210273	      5674 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_10-10        	  208411	      5688 ns/op	    2760 B/op	      26 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   26061	     45540 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   26308	     46149 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   24823	     46500 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   26318	     45952 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   23316	     47652 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_100-10       	   25821	     46407 ns/op	   25832 B/op	     206 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    2580	    474920 ns/op	  243370 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    2638	    407308 ns/op	  243377 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    3009	    460924 ns/op	  243368 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    3015	    543814 ns/op	  243372 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    3153	    435669 ns/op	  243368 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000-10      	    2338	    542068 ns/op	  243369 B/op	    2006 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     320	   3911898 ns/op	 2408679 B/op	   20011 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     289	   3908086 ns/op	 2406465 B/op	   20006 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     266	   4697564 ns/op	 2411938 B/op	   20018 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     237	   4299540 ns/op	 2406444 B/op	   20006 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     212	   5094586 ns/op	 2406462 B/op	   20006 allocs/op
+BenchmarkDeactivateUsers/input_size_10000-10     	     376	   4113281 ns/op	 2406442 B/op	   20006 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      19	  65401112 ns/op	24038377 B/op	  200078 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      18	  64312062 ns/op	24005177 B/op	  200007 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      15	  68452083 ns/op	24004833 B/op	  200010 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      19	  63731346 ns/op	24153153 B/op	  200334 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      42	  67986764 ns/op	24004392 B/op	  200006 allocs/op
+BenchmarkDeactivateUsers/input_size_100000-10    	      18	  65443356 ns/op	24004392 B/op	  200006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       2	 533356646 ns/op	240008488 B/op	 2000006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       3	 608733639 ns/op	240008488 B/op	 2000006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       2	 536041062 ns/op	240009064 B/op	 2000012 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       2	 586104250 ns/op	240014536 B/op	 2000069 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       2	 528261188 ns/op	240008488 B/op	 2000006 allocs/op
+BenchmarkDeactivateUsers/input_size_1000000-10   	       3	 448431958 ns/op	240008520 B/op	 2000006 allocs/op
+PASS
+ok  	github.com/perfectgentlemande/go-semaphore-vs-worker-pool/semaphore	80.346s
