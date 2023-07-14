@@ -1,6 +1,6 @@
 goos: darwin
 goarch: arm64
-pkg: github.com/perfectgentlemande/go-semaphore-vs-worker-pool/workerpool
+pkg: github.com/perfectgentlemande/go-semaphore-vs-worker-pool
 BenchmarkDeactivateUsers/input_size_1-10         	  273264	      4001 ns/op	     688 B/op	      16 allocs/op
 BenchmarkDeactivateUsers/input_size_1-10         	  292928	      4039 ns/op	     688 B/op	      16 allocs/op
 BenchmarkDeactivateUsers/input_size_1-10         	  290947	      4023 ns/op	     688 B/op	      16 allocs/op
