@@ -85,43 +85,156 @@ func BenchmarkDeactivateUsers(b *testing.B) {
 	type TestCase struct {
 		Activated   []users.User
 		Deactivated []users.User
+		GCount      int
 	}
 
 	cases := []TestCase{
 		{
 			Activated:   activated[:1],
 			Deactivated: deactivated[:1],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:10],
 			Deactivated: deactivated[:10],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:100],
 			Deactivated: deactivated[:100],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:1000],
 			Deactivated: deactivated[:1000],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:10000],
 			Deactivated: deactivated[:10000],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:100000],
 			Deactivated: deactivated[:100000],
+			GCount:      10,
 		},
 		{
 			Activated:   activated[:1000000],
 			Deactivated: deactivated[:1000000],
+			GCount:      10,
+		},
+		{
+			Activated:   activated[:1],
+			Deactivated: deactivated[:1],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:10],
+			Deactivated: deactivated[:10],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:100],
+			Deactivated: deactivated[:100],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:1000],
+			Deactivated: deactivated[:1000],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:10000],
+			Deactivated: deactivated[:10000],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:100000],
+			Deactivated: deactivated[:100000],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:1000000],
+			Deactivated: deactivated[:1000000],
+			GCount:      100,
+		},
+		{
+			Activated:   activated[:1],
+			Deactivated: deactivated[:1],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:10],
+			Deactivated: deactivated[:10],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:100],
+			Deactivated: deactivated[:100],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:1000],
+			Deactivated: deactivated[:1000],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:10000],
+			Deactivated: deactivated[:10000],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:100000],
+			Deactivated: deactivated[:100000],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:1000000],
+			Deactivated: deactivated[:1000000],
+			GCount:      1000,
+		},
+		{
+			Activated:   activated[:1],
+			Deactivated: deactivated[:1],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:10],
+			Deactivated: deactivated[:10],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:100],
+			Deactivated: deactivated[:100],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:1000],
+			Deactivated: deactivated[:1000],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:10000],
+			Deactivated: deactivated[:10000],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:100000],
+			Deactivated: deactivated[:100000],
+			GCount:      10000,
+		},
+		{
+			Activated:   activated[:1000000],
+			Deactivated: deactivated[:1000000],
+			GCount:      10000,
 		},
 	}
 
 	for i := range cases {
-		b.Run(fmt.Sprintf("input_size_%d", len(cases[i].Activated)), func(b *testing.B) {
+		b.Run(fmt.Sprintf("input_size_%d_goroutines_count_%d", len(cases[i].Activated), cases[i].GCount), func(b *testing.B) {
 			for j := 0; j < b.N; j++ {
-				DeactivateUsers(cases[i].Activated, 10)
+				DeactivateUsers(cases[i].Activated, cases[i].GCount)
 			}
 		})
 	}
