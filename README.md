@@ -14,3 +14,4 @@ Or this if you're mad:
 Or this if you're insane:
 `go test -bench=DeactivateUsers ./workerpool -count 10  -run=^# -benchmem | tee workerpool.txt`
 `go test -bench=DeactivateUsers ./semaphore -count 10  -run=^# -benchmem | tee semaphore.txt`
+`benchstat semaphore.txt workerpool.txt     `

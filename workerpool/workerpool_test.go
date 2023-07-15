@@ -120,11 +120,6 @@ func BenchmarkDeactivateUsers(b *testing.B) {
 			GCount:      10,
 		},
 		{
-			Activated:   activated[:1000000],
-			Deactivated: deactivated[:1000000],
-			GCount:      10,
-		},
-		{
 			Activated:   activated[:1],
 			Deactivated: deactivated[:1],
 			GCount:      100,
@@ -152,11 +147,6 @@ func BenchmarkDeactivateUsers(b *testing.B) {
 		{
 			Activated:   activated[:100000],
 			Deactivated: deactivated[:100000],
-			GCount:      100,
-		},
-		{
-			Activated:   activated[:1000000],
-			Deactivated: deactivated[:1000000],
 			GCount:      100,
 		},
 		{
@@ -188,46 +178,6 @@ func BenchmarkDeactivateUsers(b *testing.B) {
 			Activated:   activated[:100000],
 			Deactivated: deactivated[:100000],
 			GCount:      1000,
-		},
-		{
-			Activated:   activated[:1000000],
-			Deactivated: deactivated[:1000000],
-			GCount:      1000,
-		},
-		{
-			Activated:   activated[:1],
-			Deactivated: deactivated[:1],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:10],
-			Deactivated: deactivated[:10],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:100],
-			Deactivated: deactivated[:100],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:1000],
-			Deactivated: deactivated[:1000],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:10000],
-			Deactivated: deactivated[:10000],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:100000],
-			Deactivated: deactivated[:100000],
-			GCount:      10000,
-		},
-		{
-			Activated:   activated[:1000000],
-			Deactivated: deactivated[:1000000],
-			GCount:      10000,
 		},
 	}
 
